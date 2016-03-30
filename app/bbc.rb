@@ -7,7 +7,7 @@ class BBC < Sinatra::Base
   end
 
   get '/search' do
-    haml :search
+    haml :result
   end
 
   # start the server if ruby file executed directly
