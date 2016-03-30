@@ -1,12 +1,13 @@
 require 'sinatra/base'
+require 'haml'
 
 class BBC < Sinatra::Base
   get '/' do
-    erb :index
+    haml :index
   end
 
   get '/search' do
-    erb :search
+    haml :search
   end
 
   # start the server if ruby file executed directly

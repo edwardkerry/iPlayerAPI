@@ -14,6 +14,8 @@ GEM
     diff-lcs (1.2.5)
     extlib (0.9.16)
     ffi (1.9.10)
+    haml (4.0.7)
+      tilt
     highline (1.7.8)
     mime-types (2.99.1)
     mini_portile2 (2.0.0)
@@ -51,6 +53,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  haml
   rspec-sinatra
   selenium-webdriver
   sinatra
