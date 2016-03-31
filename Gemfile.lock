@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.4.0)
+    byebug (8.2.2)
     capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
@@ -52,6 +53,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   capybara
   haml
   rspec-sinatra

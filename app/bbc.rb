@@ -9,7 +9,8 @@ class BBC < Sinatra::Base
   end
 
   get '/search' do
-    @results = ""
+    api = APIQuery.new
+    @results = api.search(params[:letter])
     haml :result
   end
 
