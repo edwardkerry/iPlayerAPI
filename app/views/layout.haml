@@ -1,0 +1,9 @@
+%head
+  %title= 'BBC iPlayer Programme Search'
+
+%body
+  %header
+    %h1 BBC A-Z Programme Search
+    - [*('A'..'Z'), ('0-9')].each do |x|
+      %a{:href=>"/result?letter=#{x}&page=1"} #{x}
+  = yield
