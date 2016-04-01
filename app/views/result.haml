@@ -1,2 +1,3 @@
 - @results.each do |programme|
-  %h4=programme[:title]
+  %h4= programme[:title]
+  %img{:src => programme[:images][:standard]}

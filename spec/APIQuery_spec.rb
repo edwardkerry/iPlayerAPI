@@ -13,8 +13,9 @@ subject(:api) {described_class.new}
   end
 
   xdescribe 'search' do
-    it'should send an http request to the url' do
+    it 'should send an http request to the url' do
       expect(api.search('a')).to eq({title: 'A-team', type: 'Episode'})
     end
   end
+
 end

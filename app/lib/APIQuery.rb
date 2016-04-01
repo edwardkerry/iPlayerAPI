@@ -9,21 +9,31 @@ class APIQuery
 
   def initialize(url=BASE)
     @baseURL = url
+    @results = nil
+    @pageCount = nil
   end
 
   def search(letter)
-    letter = downcase_letter(letter)
-    uri = URI(@baseURL+letter+'/programmes?page=1')
-    res = Net::HTTP.get(uri)
-    fullRes = JSON.parse(res, symbolize_names: true)
-    library = fullRes[:atoz_programmes]
-    library[:elements]
+    hit_api(letter)
+    get_medium_images
   end
 
-private
+  private
 
-  def downcase_letter(letter)
-    /[A-Z]/.match(letter) ? letter.downcase : letter.to_s
+  def hit_api(letter)
+    uri = URI(@baseURL+downcase(letter)+'/programmes')
+    fullRes = JSON.parse(Net::HTTP.get(uri), symbolize_names: true)
+    @results = fullRes[:atoz_programmes][:elements]
+  end
+
+  def get_medium_images
+    @results.each do |prog|
+      prog[:images][:standard].gsub!('{recipe}', '406x228')
+    end
+  end
+
+  def downcase(letter)
+    /[A-Z]/.match(letter) ? letter.downcase : letter
   end
 
 end
