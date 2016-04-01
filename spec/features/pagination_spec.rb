@@ -1,4 +1,5 @@
 feature 'Pagination buttons' do
+
   scenario 'Searching A should reveal four page buttons' do
     search_a
     expect(page).to have_link('Page 1')

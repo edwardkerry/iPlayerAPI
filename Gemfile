@@ -9,4 +9,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "byebug"
+  gem "webmock", '1.6.4'
 end

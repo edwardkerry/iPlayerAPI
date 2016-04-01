@@ -1,4 +1,5 @@
 feature "Homepage" do
+
   scenario "Should have alphanumeric search links" do
     visit('/')
     expect(page).to have_link('G')
