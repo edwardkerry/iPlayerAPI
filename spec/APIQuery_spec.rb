@@ -16,6 +16,14 @@ subject(:api) {described_class.new}
     it 'should send an http request to the url' do
       expect(api.search('a')).to eq({title: 'A-team', type: 'Episode'})
     end
+
+    xit 'should set @results to the returned JSON' do
+      expect(api.results).to eq (items)
+    end
+
+    xit 'should set @pageCount to required pages' do
+      expect(api.pageCount).to eq (3)
+    end
   end
 
 end

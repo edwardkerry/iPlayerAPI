@@ -3,7 +3,7 @@ require 'json'
 
 class APIQuery
 
-  attr_reader :baseURL
+  attr_reader :baseURL, :pageCount
 
   BASE = 'https://ibl.api.bbci.co.uk/ibl/v1/atoz/'
 
@@ -13,16 +13,17 @@ class APIQuery
     @pageCount = nil
   end
 
-  def search(letter)
-    hit_api(letter)
+  def search(letter, page)
+    hit_api(letter, page)
     get_medium_images
   end
 
   private
 
-  def hit_api(letter)
-    uri = URI(@baseURL+downcase(letter)+'/programmes')
+  def hit_api(letter, page)
+    uri = URI(@baseURL+downcase(letter)+'/programmes?page='+page)
     fullRes = JSON.parse(Net::HTTP.get(uri), symbolize_names: true)
+    count_pages(fullRes[:atoz_programmes][:count])
     @results = fullRes[:atoz_programmes][:elements]
   end
 
@@ -30,6 +31,10 @@ class APIQuery
     @results.each do |prog|
       prog[:images][:standard].gsub!('{recipe}', '406x228')
     end
+  end
+
+  def count_pages(number)
+    @pageCount = (number / 20.0).ceil
   end
 
   def downcase(letter)

@@ -5,13 +5,21 @@ require './app/lib/APIQuery'
 
 class BBC < Sinatra::Base
   get '/' do
+    api
     haml :index
   end
 
   get '/result' do
-    api = APIQuery.new
-    @results = api.search(params[:letter])
+    @results = api.search(params[:letter], params[:page])
+    @letter = params[:letter]
+    @pages = api.pageCount
     haml :result
+  end
+
+  helpers do
+    def api
+      @api ||= APIQuery.new
+    end
   end
 
   # start the server if ruby file executed directly

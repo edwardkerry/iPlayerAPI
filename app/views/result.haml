@@ -1,3 +1,6 @@
+- @pages.times do |x|
+  %a{:href=>"/result?letter=#{@letter}&page=#{x+1}"}Page #{x+1}
+
 - @results.each do |programme|
   %h4= programme[:title]
   %img{:src => programme[:images][:standard]}
