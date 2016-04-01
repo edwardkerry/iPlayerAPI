@@ -23,7 +23,7 @@ class APIQuery
   def hit_api(letter, page)
     uri = URI(@baseURL+downcase(letter)+'/programmes?page='+page)
     fullRes = JSON.parse(Net::HTTP.get(uri), symbolize_names: true)
-    count_pages(fullRes[:atoz_programmes][:count])
+    count_pages(fullRes[:atoz_programmes][:count], fullRes[:atoz_programmes][:per_page])
     @results = fullRes[:atoz_programmes][:elements]
   end
 
@@ -33,8 +33,8 @@ class APIQuery
     end
   end
 
-  def count_pages(number)
-    @pageCount = (number / 20.0).ceil
+  def count_pages(prog_count, per_page)
+    @pageCount = (prog_count / per_page.to_f).ceil
   end
 
   def downcase(letter)
