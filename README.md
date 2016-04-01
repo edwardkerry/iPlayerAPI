@@ -8,14 +8,13 @@ Overview
 - The server has been kept deliberately simple, with just two routes, `/` and `/result`.
 - There is one Ruby class, APIQuery, which handles all the logic for the API requests.
 - There are three views.
-* `index` is a simple splash page.
-* `layout` handles the search bar and is present throughout.
-* `result` displays the current API response data.
+  * `index` is a simple splash page.
+  * `layout` handles the search bar and is present throughout.
+  * `result` displays the current API response data.
 - The views have been rendered in haml as an alternative to html with embedded Ruby.
 
 Installation instructions
 -------
-
 -Clone this repository
 ```
 $ git clone https://github.com/edwardkerry/iPlayerAPI
