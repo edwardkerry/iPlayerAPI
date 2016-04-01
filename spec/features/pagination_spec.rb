@@ -1,5 +1,7 @@
 feature 'Pagination buttons' do
 
+  WebMock.allow_net_connect!
+
   scenario 'Searching A should reveal four page buttons' do
     search_a
     expect(page).to have_link('Page 1')
@@ -11,7 +13,7 @@ feature 'Pagination buttons' do
   scenario 'Clicking page button should change search page' do
     search_a
     click_link('Page 2')
-    expect(page).to have_content('Alexander Armstrong\'s Real Ripping Yarns')
+    expect(page).to have_content('Alistair Cooke\'s America')
 
   end
 end

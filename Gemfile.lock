@@ -51,8 +51,6 @@ GEM
     webmock (1.6.4)
       addressable (~> 2.2, > 2.2.5)
       crack (>= 0.1.7)
-    webmock-disabler (0.0.2)
-      webmock (>= 1.6.4, < 2.0.0)
     websocket (1.2.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -68,7 +66,6 @@ DEPENDENCIES
   selenium-webdriver
   sinatra
   webmock (= 1.6.4)
-  webmock-disabler
 
 BUNDLED WITH
    1.11.2

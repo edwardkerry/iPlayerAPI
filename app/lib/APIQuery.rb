@@ -3,7 +3,7 @@ require 'json'
 
 class APIQuery
 
-  attr_reader :baseURL, :pageCount
+  attr_reader :baseURL, :pageCount, :results
 
   BASE = 'https://ibl.api.bbci.co.uk/ibl/v1/atoz/'
 

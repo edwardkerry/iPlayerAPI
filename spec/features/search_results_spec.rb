@@ -1,5 +1,7 @@
 feature 'Search results' do
 
+  WebMock.allow_net_connect!
+
   scenario 'Searching should change path' do
     search_a
     expect(page).to have_current_path('/result?letter=A&page=1')
