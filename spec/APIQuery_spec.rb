@@ -3,11 +3,11 @@ describe APIQuery do
   subject(:api) {described_class.new}
 
   json = {"atoz_programmes":
-    {"count":74, "per_page": 20, "elements": [
+    {"count":4, "per_page": 1, "elements": [
       {"title": "A-Team",
       "synopses":
       {"small": "A cool show"},
-      "images": {"standard": "http://ichef.bbci.co.uk/images/ic/40x228/p02c72z7.jpg"}
+      "images": {"standard": "http://ichef.bbci.co.uk/images/ic/40x228/b-team.jpg"}
       }
     ]}
   }

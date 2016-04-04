@@ -1,9 +1,12 @@
 %head
   %title= 'BBC iPlayer Programme Search'
+  %link{:rel=>"stylesheet",:type=>"text/css", :href=>"stylesheet.css"}
+  %link{:href => "images/favicon.ico", :rel => "shortcut icon"}/
 
 %body
   %header
-    %h1 BBC A-Z Programme Search
+    %h1.title
+      %a{:href=>"/"} BBC A - Z Programme Search
     - [*('A'..'Z'), ('0-9')].each do |x|
-      %a{:href=>"/result?letter=#{x}&page=1"} #{x}
-  = yield
+      %a.letterButton{:href=>"/result?letter=#{x}&page=1"} #{x}
+  =yield

@@ -1,6 +1,24 @@
 feature 'Search results' do
 
-  WebMock.allow_net_connect!
+  json = {"atoz_programmes":
+    {"count":4, "per_page": 1, "elements": [
+      {"title": "A-Team",
+      "synopses":
+      {"small": "A cool show"},
+      "images": {"standard": "http://ichef.bbci.co.uk/images/ic/406x228/a-team.jpg"}
+    },
+    {"title": "B-Team",
+    "synopses":
+    {"small": "A bad show"},
+    "images": {"standard": "http://ichef.bbci.co.uk/images/ic/406x228/b-team.jpg"}
+    }
+    ]}
+  }
+
+  before(:each) do
+    stub_request(:get, "https://ibl.api.bbci.co.uk/ibl/v1/atoz/a/programmes?page=1").
+      to_return(:body => json.to_json)
+  end
 
   scenario 'Searching should change path' do
     search_a
@@ -8,26 +26,23 @@ feature 'Search results' do
   end
 
   scenario 'Searching should return titles' do
-    visit('/')
-    click_link('C')
-    expect(page).to have_content('Cacamwnci')
+    search_a
+    expect(page).to have_content('A-Team')
   end
 
   scenario 'Searching should return images' do
-    visit('/')
-    click_link('C')
-    expect(page).to have_css("img[src*='406x228/p03k2nzm.jpg']")
+    search_a
+    expect(page).to have_css("img[src*='406x228/a-team.jpg']")
   end
 
   scenario 'Searching should reveal synopses' do
-    visit('/')
-    click_link('F')
-    expect(page).to have_content('Facelifts and Fillers')
+    search_a
+    expect(page).to have_content('A cool show')
   end
 
-  scenario 'Returning to the homepage' do
+  scenario 'Clicking title should return to the homepage' do
     search_a
-    click_link('Home')
+    click_link('BBC A - Z Programme Search')
     expect(page).to have_content 'Welcome to BBC iPlayer'
   end
 

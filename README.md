@@ -4,7 +4,7 @@
 Overview
 -------
 - This is app is built using Ruby, with a Sinatra server. The app was test-driven using RSpec for unit testing and Capybara for feature testing.
-- HTTP requests in the unit tests have been mocked using the WebMock gem. This is disabled in the feature tests, which make genuine calls to the API.
+- HTTP requests in the tests have been mocked using the WebMock gem. 
 - The server has been kept deliberately simple, with just two routes, `/` and `/result`.
 - There is one Ruby class, APIQuery, which handles all the logic for the API requests.
 - There are three views.

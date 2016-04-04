@@ -1,9 +1,11 @@
-%a{:href=>"/"} Home
+.container
 
-- @pages.times do |x|
-  %a{:href=>"/result?letter=#{@letter}&page=#{x+1}"}Page #{x+1}
+  - @pages.times do |x|
+    .pageButton
+      %a{:href=>"/result?letter=#{@letter}&page=#{x+1}"}Page #{x+1}
 
-- @results.each do |programme|
-  %h4= programme[:title]
-  %img{:src => programme[:images][:standard]}
-  %p= programme[:synopses][:small]
+  - @results.each do |programme|
+    .result
+      %h3.progTitle= programme[:title]
+      %img.progImg{:src => programme[:images][:standard]}
+      %p.progSyn= programme[:synopses][:small]
