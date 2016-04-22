@@ -21,10 +21,10 @@ class APIQuery
   private
 
   def hit_api(letter, page)
-    uri = URI(@baseURL+downcase(letter)+'/programmes?page='+page)
-    fullRes = JSON.parse(Net::HTTP.get(uri), symbolize_names: true)
-    count_pages(fullRes[:atoz_programmes][:count], fullRes[:atoz_programmes][:per_page])
-    @results = fullRes[:atoz_programmes][:elements]
+    uri = URI(@baseURL+letter.downcase+'/programmes?page='+page)
+    response = JSON.parse(Net::HTTP.get(uri), symbolize_names: true)
+    count_pages(response[:atoz_programmes][:count], response[:atoz_programmes][:per_page])
+    @results = response[:atoz_programmes][:elements]
   end
 
   def get_medium_images
@@ -35,10 +35,6 @@ class APIQuery
 
   def count_pages(prog_count, per_page)
     @pageCount = (prog_count / per_page.to_f).ceil
-  end
-
-  def downcase(letter)
-    /[A-Z]/.match(letter) ? letter.downcase : letter
   end
 
 end
